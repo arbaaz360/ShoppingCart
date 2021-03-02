@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart
 {
-    class DiscountInPercent : AbstractProcessor
+    class DiscountInPercent : CartItem
     {
         private int percentage=0;
         public DiscountInPercent(int percent)
@@ -12,10 +12,10 @@
             for (int i = 0; i < listOfItems.Count; i++)
             {
                 var itm = listOfItems.list[i];
-                if (itm is ISalable)
+                if (itm is ISaleable)
                 {
-                    var salableItm = ((ISalable)itm);
-                    salableItm.setCost(salableItm.getCost() * (100.0 - percentage)/100);
+                    var saleable = ((ISaleable)itm);
+                    saleable.setCost(saleable.getCost() * (100.0 - percentage)/100);
                 }
             }
 

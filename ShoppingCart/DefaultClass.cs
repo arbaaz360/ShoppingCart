@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart
 {
-    class DefaultClass : AbstractProcessor
+    class DefaultClass : CartItem
     {
         public override void Execute(ShoppingCart listOfItems)
         {

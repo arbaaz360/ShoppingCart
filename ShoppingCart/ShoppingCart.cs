@@ -4,9 +4,9 @@ namespace ShoppingCart
 {
     public class ShoppingCart
     {
-        public List<AbstractProcessor> list = new List<AbstractProcessor>();
+        public List<CartItem> list = new List<CartItem>();
         public int Count { get; set; } = 0;
-        public void Add(AbstractProcessor processor)
+        public void Add(CartItem processor)
         {
             processor.level = Count++;
             list.Add(processor);
@@ -27,9 +27,9 @@ namespace ShoppingCart
             for (int i = 0; i < list.Count; i++)
             {
                 var itm = this.list[i];
-                if (itm is ISalable)
+                if (itm.isSaleable)
                 {
-                    total += ((ISalable)itm).getCost();
+                    total += ((ISaleable)itm).getCost();
 
                 }
             }

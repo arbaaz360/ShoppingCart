@@ -1,11 +1,9 @@
 ﻿namespace ShoppingCart
 {
-    class FlatCoupon : AbstractProcessor
+    class PercentOffOnNextItem : PercentOff
     {
-        private int position;
-        public FlatCoupon(int pos)
+        public PercentOffOnNextItem(double percent):base(percent)
         {
-            this.position = pos;
         }
         public override void Execute(ShoppingCart listOfItems)
         {
@@ -13,17 +11,17 @@
             for (int i = 0; i < listOfItems.Count; i++)
             {
                 var itm = listOfItems.list[i];
-                if (itm is ISalable)
+
+                if (i > level && itm is ISaleable)
                 {
                     counter++;
-                    if (counter == 2)
+                    if (counter == 1)
                     {
-                        var salableItm = ((ISalable)itm);
-                        salableItm.setCost(salableItm.getCost() - this.position);
+                        var saleable = ((ISaleable)itm);
+                        saleable.setCost(ApplyDiscount(saleable.getCost()));
                     }
                 }
             }
-
             level++;
             base.Execute(listOfItems);
         }

@@ -2,7 +2,6 @@
 {
     public abstract class AbstractProcessor
     {
-        public int level { get; set; }
         public virtual AbstractProcessor Successor { get; protected set; }
 
         public virtual void Execute(ShoppingCart listOfItems)

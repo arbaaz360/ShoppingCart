@@ -1,6 +1,6 @@
 ﻿namespace ShoppingCart
 {
-    interface ISalable
+    interface ISaleable
     {
         double getCost();
         double setCost(double cost);

@@ -1,11 +1,12 @@
 ﻿namespace ShoppingCart
 {
-    class SalableItem : AbstractProcessor, ISalable
+    class SaleableItem : CartItem, ISaleable
     {
         public double Cost { get; set; }
-        public bool isSalable { get; set; }
-        public SalableItem(int cost)
+        
+        public SaleableItem(int cost)
         {
+            this.isSaleable = true;
             this.setCost(cost);
         }
         public override void Execute(ShoppingCart listOfItems)

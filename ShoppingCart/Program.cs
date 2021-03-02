@@ -8,27 +8,31 @@ namespace ShoppingCart
 
         static void Main(string[] args)
         {
-            ShoppingCart cart = new ShoppingCart();
+            ShoppingCart cart1 = new ShoppingCart();
 
             //Case 1
-            //listOfItems.Add(new TenPercentOnNextItem());
-            //listOfItems.Add(new SalableItem(10));
-            //listOfItems.Add(new SalableItem(20));
+            cart1.Add(new PercentOffOnNextItem(10));
+            cart1.Add(new SaleableItem(10));
+            cart1.Add(new SaleableItem(20));
+            Console.WriteLine("Cart 1 Total:" + cart1.getTotal());
 
+            ShoppingCart cart2 = new ShoppingCart();
             //Case 2
-            //listOfItems.Add(new SalableItem(10));
-            //listOfItems.Add(new TenPercentOnNextItem());
-            //listOfItems.Add(new SalableItem(20));
+            cart2.Add(new SaleableItem(10));
+            cart2.Add(new PercentOffOnNextItem(10));
+            cart2.Add(new SaleableItem(20));
+            Console.WriteLine("Cart 2 Total:" + cart2.getTotal());
 
+            ShoppingCart cart3 = new ShoppingCart();
             //Case 3
-            cart.Add(new SalableItem(10));
-            cart.Add(new FlatCoupon(2));
-            cart.Add(new DiscountInPercent(25));
-            cart.Add(new TenPercentOnNextItem());
-            cart.Add(new SalableItem(10));
+            cart3.Add(new SaleableItem(10));
+            cart3.Add(new FlatCoupon(2));
+            cart3.Add(new DiscountInPercent(25));
+            cart3.Add(new PercentOffOnNextItem(10));
+            cart3.Add(new SaleableItem(10));
 
 
-            Console.WriteLine("Answer:"+cart.getTotal());
+            Console.WriteLine("Cart 3 Total:"+cart3.getTotal());
             Console.ReadLine();
         }
     }
